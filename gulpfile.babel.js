@@ -95,7 +95,7 @@ gulp.task('fonts', () => {
 
 // Nettoyage du dossier de destination
 gulp.task('clean', (callback) => {
-  $.rimraf('dist', callback)
+  $.rimraf('dist', callback);
 });
 
 // Génération des différents assets
@@ -106,7 +106,7 @@ gulp.task('build', ['clean'], function () {
 gulp.task('default', ['build']);
 
 // Surveillance automatique des fichiers sources
-gulp.task('watch', ['build', 'server'], () => {
+gulp.task('watch', ['server'], () => {
   gulp.watch('src/**/*.html', ['templates', $.browserSync.reload]);
   gulp.watch('src/assets/scss/**/*.scss', ['styles', $.browserSync.reload]);
   gulp.watch('src/assets/js/**/*', ['scripts', $.browserSync.reload]);
