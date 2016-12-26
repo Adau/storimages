@@ -1,5 +1,5 @@
-import gulp from 'gulp';
-import plugins from 'gulp-load-plugins';
+const gulp = require('gulp');
+const plugins = require('gulp-load-plugins');
 
 // Chargement des plugins de package.json
 const $ = plugins({
@@ -63,9 +63,7 @@ gulp.task('scripts', () => {
     .pipe($.if(!PRODUCTION, $.sourcemaps.init()))
 
     // Compilation des fichiers ES2015
-    // .pipe($.babel({
-    //   presets: ['es2015']
-    // }))
+    .pipe($.babel())
 
     // Concaténation des fichiers JavaScript
     .pipe($.concat('main.js'))
