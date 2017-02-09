@@ -30,7 +30,7 @@
     "yargs": "^6.5.0"
   },
   "dependencies": {
-    "bootstrap": "^v4.0.0-alpha.5",
+    "bootstrap": "^v4.0.0-alpha.6",
     "font-awesome": "^4.7.0",
     "jquery": "^3.1.1"
   }
