@@ -4,7 +4,7 @@
     yarn install
     ```
 
-2. Générer les fichier de distribution :
+2. Générer les fichiers de distribution :
 
     ```sh
     yarn run start
