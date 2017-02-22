@@ -1,5 +1,5 @@
-const gulp = require('gulp');
-const plugins = require('gulp-load-plugins');
+import gulp from 'gulp';
+import plugins from 'gulp-load-plugins';
 
 // Chargement des plugins de package.json
 const $ = plugins({
