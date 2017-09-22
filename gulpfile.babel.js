@@ -7,6 +7,7 @@ const $ = plugins({
 });
 
 const PRODUCTION = !!($.yargs.argv.production);
+const webpack = require('webpack');
 
 // Initialisation du Serveur
 gulp.task('server', () => {
@@ -33,7 +34,8 @@ gulp.task('styles', () => {
     .pipe($.sass({
       includePaths: [
         'node_modules/bootstrap/scss',
-        'node_modules/font-awesome/scss'
+        'node_modules/font-awesome/scss',
+        'node_modules/flag-icon-css/sass'
       ]
     }).on('error', $.sass.logError))
 
@@ -52,27 +54,41 @@ gulp.task('styles', () => {
 
 // Génération du fichier JavaScript principal
 gulp.task('scripts', () => {
-  return gulp.src([
-    'node_modules/jquery/dist/jquery.js',
-    'node_modules/tether/dist/js/tether.js',
-    'node_modules/bootstrap/dist/js/bootstrap.js',
-    'src/assets/js/**/*'
-  ])
+  return gulp.src('src/assets/js/main.js')
 
-    // Initialisation des Source Maps
-    .pipe($.if(!PRODUCTION, $.sourcemaps.init()))
-
-    // Compilation des fichiers ES2015
-    .pipe($.babel())
-
-    // Concaténation des fichiers JavaScript
-    .pipe($.concat('main.js'))
-
-    // Minification des fichiers JS
-    .pipe($.if(PRODUCTION, $.uglify()))
-
-    // Écriture des Source Maps
-    .pipe($.if(!PRODUCTION, $.sourcemaps.write('./')))
+    // Webpack
+    .pipe($.webpackStream({
+      output: {
+        filename: 'main.min.js'
+      },
+      devtool: 'source-map',
+      module: {
+        rules: [{
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['es2015']
+            }
+          }
+        }
+      ]},
+      plugins: [
+        new webpack.DefinePlugin({
+          'process.env': {
+            NODE_ENV: PRODUCTION ? '"production"' : '"development"'
+          }
+        }),
+        new webpack.ProvidePlugin({
+          jQuery: 'jquery',
+          $: 'jquery',
+          Popper: ['popper.js', 'default']
+        })
+      ].concat(
+        PRODUCTION ? new webpack.optimize.UglifyJsPlugin() : []
+      )
+    }))
 
     // Écriture des fichiers JS
     .pipe(gulp.dest('./dist/assets/js'));
