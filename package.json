@@ -20,7 +20,6 @@
     "gulp-babel": "^6.1.2",
     "gulp-concat": "^2.6.1",
     "gulp-cssnano": "^2.1.2",
-    "gulp-html-extend": "^1.1.6",
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "^3.1.1",
     "gulp-load-plugins": "^1.4.0",
@@ -35,6 +34,7 @@
   "dependencies": {
     "bootstrap": "^4.0.0-beta",
     "font-awesome": "^4.7.0",
+    "gulp-nunjucks": "^3.0.0",
     "jquery": "^3.1.1",
     "popper.js": "^1.12.5"
   }

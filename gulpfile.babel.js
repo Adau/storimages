@@ -18,8 +18,8 @@ gulp.task('server', () => {
 
 // Génération du template HTML
 gulp.task('templates', () => {
-  return gulp.src(['src/templates/*.html', '!src/templates/_*.html'])
-    .pipe($.htmlExtend({ annotations: false }))
+  return gulp.src(['src/templates/index.html'])
+    .pipe($.nunjucks.compile())
     .pipe(gulp.dest('dist'));
 });
 
