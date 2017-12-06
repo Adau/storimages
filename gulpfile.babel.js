@@ -23,8 +23,15 @@ gulp.task('templates', () => {
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('sass-lint', () => {
+  return gulp.src('src/assets/scss/**/*.scss')
+    .pipe($.sassLint())
+    .pipe($.sassLint.format())
+    .pipe($.sassLint.failOnError())
+});
+
 // Compilation des fichiers Sass
-gulp.task('styles', () => {
+gulp.task('styles', ['sass-lint'], () => {
   return gulp.src('src/assets/scss/main.scss')
 
     // Initialisation des Source Maps
