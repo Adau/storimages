@@ -23,13 +23,17 @@ gulp.task('templates', () => {
     .pipe(gulp.dest('dist'));
 });
 
-// Compilation des fichiers Sass
-gulp.task('styles', () => {
-  return gulp.src('src/assets/scss/main.scss')
-    // Validation des fichiers Sass
+// Validation des fichiers Sass
+gulp.task('sass-lint', () => {
+  return gulp.src('src/assets/scss/**/*.scss')
     .pipe($.sassLint())
     .pipe($.sassLint.format())
     .pipe($.sassLint.failOnError())
+});
+
+// Compilation des fichiers Sass
+gulp.task('styles', ['sass-lint'], () => {
+  return gulp.src('src/assets/scss/main.scss')
 
     // Initialisation des Source Maps
     .pipe($.if(!PRODUCTION, $.sourcemaps.init()))
