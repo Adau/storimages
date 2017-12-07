@@ -4,14 +4,14 @@
     yarn install
     ```
 
-2. Générer les fichiers de distribution :
+2. Générer les fichiers de distribution et lancer le projet :
 
     ```sh
     yarn run start
     ```
 
-3. Lancer le projet :
+3. Générer les fichiers de distribution pour la production :
 
     ```sh
-    gulp watch
+    yarn run build
     ```
