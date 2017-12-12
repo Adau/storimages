@@ -42,8 +42,7 @@ gulp.task('styles', ['sass-lint'], () => {
     .pipe($.sass({
       includePaths: [
         'node_modules/bootstrap/scss',
-        'node_modules/font-awesome/scss',
-        'node_modules/flag-icon-css/sass'
+        'node_modules/font-awesome/scss'
       ]
     }).on('error', $.sass.logError))
 
