@@ -19,7 +19,7 @@ gulp.task('server', () => {
 // Génération du template HTML
 gulp.task('templates', () => {
   return gulp.src(['src/templates/**/*.html', '!src/templates/**/_*.html'])
-    .pipe($.nunjucks.compile())
+    .pipe($.nunjucks.compile(require('./src/data/data.json')))
     .pipe(gulp.dest('dist'));
 });
 
@@ -128,7 +128,7 @@ gulp.task('default', ['build']);
 
 // Surveillance automatique des fichiers sources
 gulp.task('watch', ['server'], () => {
-  gulp.watch('src/**/*.html', ['templates', $.browserSync.reload]);
+  gulp.watch('src/templates/**/*.html', ['templates', $.browserSync.reload]);
   gulp.watch('src/assets/scss/**/*.scss', ['styles', $.browserSync.reload]);
   gulp.watch('src/assets/js/**/*', ['scripts', $.browserSync.reload]);
   gulp.watch('src/assets/img/**/*', ['images', $.browserSync.reload]);
