@@ -1,4 +1,3 @@
-import gulp from 'gulp';
 import plugins from 'gulp-load-plugins';
 
 // Chargement des plugins de package.json
@@ -6,13 +5,15 @@ const $ = plugins({
   pattern: ['*']
 });
 
+const gulp = $.gulp;
 const PRODUCTION = !!($.yargs.argv.production);
 const webpack = require('webpack');
 
 // Initialisation du Serveur
 gulp.task('server', () => {
   $.browserSync.init({
-    server: 'dist'
+    server: 'dist',
+    files: 'dist'
   });
 });
 
@@ -28,11 +29,11 @@ gulp.task('sass-lint', () => {
   return gulp.src('src/assets/scss/**/*.scss')
     .pipe($.sassLint())
     .pipe($.sassLint.format())
-    .pipe($.sassLint.failOnError())
+    .pipe($.sassLint.failOnError());
 });
 
 // Compilation des fichiers Sass
-gulp.task('styles', ['sass-lint'], () => {
+gulp.task('styles', gulp.series('sass-lint', () => {
   return gulp.src('src/assets/scss/main.scss')
 
     // Initialisation des Source Maps
@@ -57,7 +58,7 @@ gulp.task('styles', ['sass-lint'], () => {
 
     // Écriture des fichiers CSS
     .pipe(gulp.dest('./dist/assets/css'));
-});
+}));
 
 // Génération du fichier JavaScript principal
 gulp.task('scripts', () => {
@@ -120,16 +121,14 @@ gulp.task('clean', (callback) => {
 });
 
 // Génération des différents assets
-gulp.task('build', ['clean'], function () {
-  gulp.start('templates', 'styles', 'scripts', 'images', 'fonts');
-});
+gulp.task('build', gulp.series('clean', gulp.parallel('templates', 'styles', 'scripts', 'images', 'fonts')));
 
-gulp.task('default', ['build']);
+gulp.task('default', gulp.series('build'));
 
 // Surveillance automatique des fichiers sources
-gulp.task('watch', ['server'], () => {
-  gulp.watch('src/templates/**/*.html', ['templates', $.browserSync.reload]);
-  gulp.watch('src/assets/scss/**/*.scss', ['styles', $.browserSync.reload]);
-  gulp.watch('src/assets/js/**/*', ['scripts', $.browserSync.reload]);
-  gulp.watch('src/assets/img/**/*', ['images', $.browserSync.reload]);
-});
+gulp.task('watch', gulp.parallel('server', () => {
+  gulp.watch('src/templates/**/*.html', gulp.series('templates'));
+  gulp.watch('src/assets/scss/**/*.scss', gulp.series('styles'));
+  gulp.watch('src/assets/js/**/*.js', gulp.series('scripts'));
+  gulp.watch('src/assets/img/**/*', gulp.series('images'));
+}));
