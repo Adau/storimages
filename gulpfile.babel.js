@@ -43,7 +43,7 @@ gulp.task('styles', gulp.series('sass-lint', () => {
     .pipe($.sass({
       includePaths: [
         'node_modules/bootstrap/scss',
-        'node_modules/font-awesome/scss'
+        'node_modules/@fortawesome/fontawesome-free-webfonts/scss'
       ]
     }).on('error', $.sass.logError))
 
@@ -111,8 +111,8 @@ gulp.task('images', () => {
 
 // Copie des polices de caractère externes
 gulp.task('fonts', () => {
-  return gulp.src('node_modules/font-awesome/fonts/**/*')
-    .pipe(gulp.dest('./dist/assets/fonts'));
+  return gulp.src('node_modules/@fortawesome/fontawesome-free-webfonts/webfonts/**/*')
+    .pipe(gulp.dest('./dist/assets/webfonts'));
 });
 
 // Nettoyage du dossier de destination
