@@ -1,1 +1,7 @@
-{}
+{
+  "site": {
+    "name": "Storimages",
+    "baseurl": "/storimages",
+    "author": "Philippe Bigard"
+  }
+}

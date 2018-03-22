@@ -1,0 +1,9 @@
+.footer {
+  @include make-container();
+  @include make-container-max-widths();
+
+  padding-top: map-get($spacers, 3);
+  padding-bottom: map-get($spacers, 3);
+  font-size: $small-font-size;
+  text-align: center;
+}
