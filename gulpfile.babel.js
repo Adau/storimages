@@ -117,7 +117,7 @@ gulp.task('fonts', () => {
 
 // Nettoyage du dossier de destination
 gulp.task('clean', (callback) => {
-  $.rimraf('dist', callback);
+  $.rimraf('dist/**/*', callback);
 });
 
 // Génération des différents assets
