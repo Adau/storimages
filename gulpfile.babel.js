@@ -20,12 +20,13 @@ gulp.task('server', () => {
 
 // Génération du template HTML
 gulp.task('templates', () => {
-  delete require.cache[require.resolve('./src/data/data.json')];
-  const data = require('./src/data/data.json');
-  data.site.baseurl = PRODUCTION ? `/${name}` : '';
-
   return gulp.src('src/templates/**/*.html')
-    .pipe($.nunjucks.compile(data))
+    .pipe($.data(() => {
+      const data = JSON.parse($.fs.readFileSync('./src/data/data.json'));
+      data.site.baseurl = PRODUCTION ? `/${name}` : '';
+      return data;
+    }))
+    .pipe($.nunjucks.compile())
     .pipe(gulp.dest('dist'));
 });
 
