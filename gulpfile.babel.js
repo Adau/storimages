@@ -1,4 +1,5 @@
 import plugins from 'gulp-load-plugins';
+import { name } from './package.json';
 
 // Chargement des plugins de package.json
 const $ = plugins({
@@ -20,9 +21,11 @@ gulp.task('server', () => {
 // Génération du template HTML
 gulp.task('templates', () => {
   delete require.cache[require.resolve('./src/data/data.json')];
+  const data = require('./src/data/data.json');
+  data.site.baseurl = PRODUCTION ? `/${name}` : '';
 
   return gulp.src('src/templates/**/*.html')
-    .pipe($.nunjucks.compile(require('./src/data/data.json')))
+    .pipe($.nunjucks.compile(data))
     .pipe(gulp.dest('dist'));
 });
 
