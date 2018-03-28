@@ -1,9 +1,9 @@
 {
-  "name": "front-end-boilerplate",
+  "name": "storimages",
   "version": "1.0.0",
-  "description": "Front-end Boilerplate",
+  "description": "Site Web Storimages",
   "main": "gulpfile.babel.js",
-  "repository": "https://github.com/Adau/front-end-boilerplate.git",
+  "repository": "https://github.com/Adau/storimages.git",
   "author": "Adrien <adrien.dau@gmail.com>",
   "license": "MIT",
   "scripts": {
