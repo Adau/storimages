@@ -1,0 +1,38 @@
+{% extends "partials/_layout.njk" %}
+
+{% block main %}
+<main>
+  <div class="section py-5">
+    <div class="container">
+      <h3>Photos</h3>
+
+      <p>1234 éléments trouvés</p>
+
+      <div class="row">
+        {% for i in range(1, 17) %}
+        <div class="col-6 col-md-3">
+          <figure class="figure">
+            <a href="#">
+              <img class="figure-img img-fluid rounded" src="//placeimg.com/260/195/any?v={{ i }}" alt="photo">
+            </a>
+            <figcaption class="figure-caption">Lorem ipsum dolor si amet.</figcaption>
+          </figure>
+        </div>
+        {% endfor %}
+      </div>
+
+      <nav>
+        <ul class="pagination justify-content-center mb-0">
+          <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
+          <li class="page-item active"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">5</a></li>
+          <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</main>
+{% endblock %}
