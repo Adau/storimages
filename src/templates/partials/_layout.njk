@@ -8,9 +8,11 @@
 </head>
 
 <body>
-  {% include "_header.html" %}
-  {% block content %}{% endblock %}
-  {% include "_footer.html" %}
+  {% include "partials/_header.njk" %}
+
+  {% block main %}{% endblock %}
+
+  {% include "partials/_footer.njk" %}
 
   <script src="assets/js/main.min.js"></script>
 </body>

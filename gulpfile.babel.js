@@ -21,7 +21,7 @@ gulp.task('server', () => {
 gulp.task('templates', () => {
   delete require.cache[require.resolve('./src/data/data.json')];
 
-  return gulp.src(['src/templates/**/*.html', '!src/templates/**/_*.html'])
+  return gulp.src('src/templates/**/*.html')
     .pipe($.nunjucks.compile(require('./src/data/data.json')))
     .pipe(gulp.dest('dist'));
 });
@@ -129,7 +129,7 @@ gulp.task('default', gulp.series('build'));
 
 // Surveillance automatique des fichiers sources
 gulp.task('watch', gulp.parallel('server', () => {
-  gulp.watch(['src/templates/**/*.html', './src/data/data.json'], gulp.series('templates'));
+  gulp.watch(['src/templates/**/*', './src/data/data.json'], gulp.series('templates'));
   gulp.watch('src/assets/scss/**/*.scss', gulp.series('styles'));
   gulp.watch('src/assets/js/**/*.js', gulp.series('scripts'));
   gulp.watch('src/assets/img/**/*', gulp.series('images'));
