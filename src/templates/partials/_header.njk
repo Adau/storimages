@@ -8,16 +8,16 @@
 
       <div class="collapse navbar-collapse" id="navbar-header">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item {{ "active" if page == "collections" }}">
             <a class="nav-link" href="#">Collections</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ "active" if page == "photos" }}">
             <a class="nav-link" href="{{ site.baseurl }}/photos.html">Photos</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ "active" if page == "videos" }}">
             <a class="nav-link" href="#">Vidéos</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ "active" if page == "editorial" }}">
             <a class="nav-link" href="#">Éditorial</a>
           </li>
         </ul>
