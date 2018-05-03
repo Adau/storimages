@@ -1,0 +1,11 @@
+.grid {
+  &__item {
+    width: calc((100% - #{$grid-gutter-width}) / 3);
+    margin-bottom: ($grid-gutter-width / 2);
+    float: left;
+  }
+
+  &__picture {
+    width: 100%;
+  }
+}

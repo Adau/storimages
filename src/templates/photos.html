@@ -9,17 +9,109 @@
 
       <p>1234 éléments trouvés</p>
 
-      <div class="row">
+      <div class="grid">
         {% for i in range(1, 17) %}
-        <div class="col-6 col-md-3">
-          <figure class="figure">
-            <a href="#">
-              <img class="figure-img img-fluid rounded" src="//placeimg.com/260/195/any?v={{ i }}" alt="photo">
-            </a>
-            <figcaption class="figure-caption">Lorem ipsum dolor si amet.</figcaption>
-          </figure>
+        <div class="grid__item">
+          <a href="#" data-toggle="modal" data-target="#modal">
+            <img class="grid__picture"
+              src="//placeimg.com/{{ [100,200,300,400] | random }}/{{ [100,200] | random }}/any?v={{ i }}"
+              alt="photo"
+            >
+          </a>
         </div>
         {% endfor %}
+      </div>
+
+      <div class="modal fade" id="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Titre</h5>
+              <button type="button" class="close" data-dismiss="modal">
+                <span>&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-6">
+                    <img class="img-fluid"
+                      src="//placeimg.com/500/500/any?v={{ i }}"
+                      alt="photo"
+                    >
+                  </div>
+                  <div class="col-6">
+                    <table class="table table-sm">
+                      <thead class="thead-light">
+                        <tr>
+                          <th scope="col" colspan="2">Informations</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">Référence</th>
+                          <td>#SP00003186</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Auteur</th>
+                          <td>Bigard Philippe (661 images)</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Taille Image</th>
+                          <td>41 x 62 cm - 300 dpi (4912 x 7360 pixels)</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Taille Fichier</th>
+                          <td>4.1 Mb sur disque (103.0 Mb ouvert)</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Description</th>
+                          <td>Lotem ipsum dolor sit amet</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Mots clés</th>
+                          <td>
+                            <span class="badge badge-light">lorem</span>
+                            <span class="badge badge-light">ipsum</span>
+                            <span class="badge badge-light">dolor</span>
+                            <span class="badge badge-light">sit</span>
+                            <span class="badge badge-light">amet</span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <table class="table table-sm">
+                      <thead class="thead-light">
+                        <tr>
+                          <th scope="col" colspan="2">Autour de cette photo</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">Même modèle</th>
+                          <td><a href="#">135 images</a></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Même série</th>
+                          <td><a href="#">661 vidéos</a></td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Même story</th>
+                          <td><a href="#">ST00000026</a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-light" data-dismiss="modal">Fermer</button>
+              <a class="btn btn-primary" href="#" role="button">Acheter cette photo</a>
+            </div>
+          </div>
+        </div>
       </div>
 
       <nav>
