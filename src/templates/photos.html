@@ -10,10 +10,10 @@
       <p>1234 éléments trouvés</p>
 
       <div id="grid" class="grid">
-        {% for i in range(1, 17) %}
-        <div class="grid__item">
+        {% for i in range(1, 20) %}
+        <div class="grid__item {{ "grid__item--landscape" if i % 3 == 0 }}">
           <a class="grid__link collapsed" href="#" data-toggle="collapse" data-target="#collapse-{{ i }}">
-            <img class="w-100 img-fluid" src="//placeimg.com/500/500/any?v={{ i }}" alt="photo">
+            <img class="grid__picture" src="//placeimg.com/500/500/any?v={{ i }}" alt="photo">
           </a>
         </div>
         <div id="collapse-{{ i }}" class="grid__item-content collapse" data-parent="#grid">
