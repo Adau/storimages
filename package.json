@@ -36,9 +36,9 @@
     "yargs": "^11.0.0"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free-webfonts": "^1.0.4",
-    "bootstrap": "^4.1.0",
+    "@fortawesome/fontawesome-free-webfonts": "^1.0.9",
+    "bootstrap": "^4.1.1",
     "jquery": "^3.3.1",
-    "popper.js": "^1.14.1"
+    "popper.js": "^1.14.3"
   }
 }
