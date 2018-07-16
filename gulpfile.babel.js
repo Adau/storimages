@@ -54,7 +54,10 @@ gulp.task('styles', gulp.series('sass-lint', () => {
     }).on('error', $.sass.logError))
 
     // Ajout des préfixes vendeurs
-    .pipe($.autoprefixer('last 2 version'))
+    .pipe($.autoprefixer({
+      browsers: 'last 2 version',
+      grid: true
+    }))
 
     // Écriture des Source Maps
     .pipe($.if(!PRODUCTION, $.sourcemaps.write('./')))
