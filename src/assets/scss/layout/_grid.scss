@@ -47,9 +47,12 @@
     height: 100%;
     max-height: 266px;
     object-fit: cover;
+    filter: grayscale(100);
   }
 
   &__item-content {
+    padding: map-get($spacers, 3);
+    background-color: theme-color('light');
     grid-column: 1 / -1;
   }
 }
