@@ -13,13 +13,13 @@
         {% for photo in photos %}
         <div class="grid__item {{ "grid__item--landscape" if photo.mode == 'landscape' }}">
           <a class="grid__link collapsed" href="#" data-toggle="collapse" data-target="#collapse-{{ loop.index }}">
-            <img class="grid__picture" src="{{ photo.url }}" alt="photo">
+            <img class="grid__picture" src="{{ site.baseurl }}{{ photo.url }}" alt="photo">
           </a>
         </div>
         <div id="collapse-{{ loop.index }}" class="grid__item-content collapse" data-parent="#grid">
           <div class="row">
             <div class="col-md-6 col-lg-7">
-              <img class="w-100 img-fluid d-none d-md-block" src="{{ photo.url }}" alt="photo">
+              <img class="w-100 img-fluid d-none d-md-block" src="{{ site.baseurl }}{{ photo.url }}" alt="photo">
             </div>
             <div class="col-md-6 col-lg-5">
               <h4>Lorem ipsum dolor sit amet</h4>
