@@ -7,7 +7,7 @@
 2. Générer les fichiers de distribution pour le développement et lancer le projet :
 
     ```sh
-    yarn run start
+    yarn run dev
     ```
 
     Générer les fichiers de distribution pour la production :
