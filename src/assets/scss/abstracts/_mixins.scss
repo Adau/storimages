@@ -1,0 +1,11 @@
+@mixin arrow($color: color('white'), $width: 1rem) {
+  position: relative;
+
+  &::after {
+    width: 0;
+    height: 0;
+    border-right: $width solid transparent;
+    border-bottom: $width solid $color;
+    border-left: $width solid transparent;
+  }
+}

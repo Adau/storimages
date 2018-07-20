@@ -3,7 +3,7 @@
   margin-bottom: map-get($spacers, 3);
   grid-template-columns: 1fr;
   grid-auto-flow: row dense;
-  grid-gap: ($grid-gutter-width / 2);
+  grid-gap: $spacer;
 
   @include media-breakpoint-up(md) {
     grid-template-columns: repeat(5, 1fr);
@@ -22,20 +22,16 @@
   }
 
   &__link {
+    @include arrow($card-border-color, 1rem);
+
     display: block;
-    position: relative;
     height: 100%;
 
     &:not(.collapsed)::after {
       position: absolute;
       top: 100%;
       left: 50%;
-      width: 0;
-      height: 0;
       transform: translateX(-50%);
-      border-width: .8rem .8rem 0;
-      border-style: solid;
-      border-color: $card-border-color transparent transparent;
       content: '';
     }
   }
