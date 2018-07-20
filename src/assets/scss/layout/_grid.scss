@@ -6,7 +6,7 @@
   grid-gap: $spacer;
 
   @include media-breakpoint-up(md) {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));  // repeat(5, 1fr);
   }
 
   &__item {
@@ -41,7 +41,7 @@
 
     width: 100%;
     height: 100%;
-    max-height: 266px;
+    // max-height: 266px;
     object-fit: cover;
     filter: grayscale(100);
   }

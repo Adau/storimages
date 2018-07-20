@@ -10,16 +10,16 @@
       <p>1234 éléments trouvés</p>
 
       <div id="grid" class="grid">
-        {% for i in range(1, 20) %}
-        <div class="grid__item {{ "grid__item--landscape" if i % 3 == 0 }}">
-          <a class="grid__link collapsed" href="#" data-toggle="collapse" data-target="#collapse-{{ i }}">
-            <img class="grid__picture" src="//placeimg.com/500/500/any?v={{ i }}" alt="photo">
+        {% for photo in photos %}
+        <div class="grid__item {{ "grid__item--landscape" if photo.mode == 'landscape' }}">
+          <a class="grid__link collapsed" href="#" data-toggle="collapse" data-target="#collapse-{{ loop.index }}">
+            <img class="grid__picture" src="{{ photo.url }}" alt="photo">
           </a>
         </div>
-        <div id="collapse-{{ i }}" class="grid__item-content collapse" data-parent="#grid">
+        <div id="collapse-{{ loop.index }}" class="grid__item-content collapse" data-parent="#grid">
           <div class="row">
             <div class="col-md-6 col-lg-7">
-              <img class="w-100 img-fluid d-none d-md-block" src="//placeimg.com/500/500/any?v={{ i }}" alt="photo">
+              <img class="w-100 img-fluid d-none d-md-block" src="{{ photo.url }}" alt="photo">
             </div>
             <div class="col-md-6 col-lg-5">
               <h4>Lorem ipsum dolor sit amet</h4>
